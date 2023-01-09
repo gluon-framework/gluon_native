@@ -1,0 +1,29 @@
+[package]
+name = "gluon_native"
+version = "0.1.0"
+license = "MIT"
+edition = "2018"
+exclude = ["index.node"]
+
+[lib]
+crate-type = ["cdylib"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+[dependencies.neon]
+version = "0.10"
+default-features = false
+features = ["napi-6"]
+
+[target.'cfg(target_os = "windows")'.dependencies]
+windows-sys = { version = "0.42", features = [ "Win32_UI_WindowsAndMessaging", "Win32_Foundation" ] }
+
+[profile.release]
+strip = true
+opt-level = "z"
+lto = true
+incremental = false
+codegen-units = 1
+panic = "abort"

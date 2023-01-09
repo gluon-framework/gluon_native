@@ -1,2 +1,3 @@
 # gluon_native
- Native library for Gluon to use OS-level APIs
+
+Native library for Gluon to interact with OS-level APIs from NodeJS
